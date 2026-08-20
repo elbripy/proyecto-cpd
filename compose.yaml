@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # NODO MATRIZ
+  postgres-matriz:
+    image: postgres:15-alpine
+    container_name: cpd-matriz-db
+    networks:
+      - red_empresarial
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: matriz_db
+      POSTGRES_USER: ucom_admin
+      POSTGRES_PASSWORD: password_matriz
+    volumes:
+      - datos_matriz:/var/lib/postgresql/data
+
+  # NODO SUCURSAL A
+  postgres-sucursal-a:
+    image: postgres:15-alpine
+    container_name: cpd-sucursala-db
+    networks:
+      - red_empresarial
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: sucursal_a_db
+      POSTGRES_USER: ucom_admin
+      POSTGRES_PASSWORD: password_sucursal_a
+    volumes:
+      - datos_sucursal_a:/var/lib/postgresql/data
+
+  # NODO SUCURSAL B
+  postgres-sucursal-b:
+    image: postgres:15-alpine
+    container_name: cpd-sucursalb-db
+    networks:
+      - red_empresarial
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_DB: sucursal_b_db
+      POSTGRES_USER: ucom_admin
+      POSTGRES_PASSWORD: password_sucursal_b
+    volumes:
+      - datos_sucursal_b:/var/lib/postgresql/data
+
+  # NODO SUCURSAL C
+  postgres-sucursal-c:
+    image: postgres:15-alpine
+    container_name: cpd-sucursalc-db
+    networks:
+      - red_empresarial
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_DB: sucursal_c_db
+      POSTGRES_USER: ucom_admin
+      POSTGRES_PASSWORD: password_sucursal_c
+    volumes:
+      - datos_sucursal_c:/var/lib/postgresql/data
+
+networks:
+  red_empresarial:
+    driver: bridge
+
+volumes:
+  datos_matriz:
+  datos_sucursal_a:
+  datos_sucursal_b:
+  datos_sucursal_c:
