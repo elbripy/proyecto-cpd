@@ -1,1 +1,4 @@
-
+almacenamiento/
+*.sql
+*.sql.gz
+.env
