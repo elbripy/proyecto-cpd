@@ -13,7 +13,7 @@ import psycopg2
 # Configuración única para conectarse a la Casa Matriz (Puerto 5432)
 # Las sucursales se conectan remotamente al nodo central del CPD para asentar sus ventas
 DB_CONFIG = {
-    "host": "localhost",
+    "host": "postgres-matriz",
     "port": "5432",  # Puerto de la Casa Matriz
     "database": "matriz_db",
     "user": "ucom_admin",
